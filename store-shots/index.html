@@ -4,7 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Loyaly Store Shots</title>
-<meta name="description" content="Your real app screenshot inside the phone; one phone across two screens." />
+<meta name="description" content="Loyaly App Store screenshots — real app screens, ES + EN." />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
@@ -34,11 +34,14 @@
   .pair-label { color: var(--muted); font-size: 12px; letter-spacing: 3px; text-transform: uppercase; margin-bottom: -32px; }
   .pair { display: flex; gap: 0; flex-wrap: nowrap; }
   body.show-gap .pair { gap: 24px; }
+  .row { display: flex; gap: 28px; flex-wrap: wrap; justify-content: center; }
+  body.zoom-full .row { gap: 60px; }
 
   .screen { --W: 1290px; --H: 2796px; --S: 0.22; width: calc(var(--W) * var(--S)); height: calc(var(--H) * var(--S));
     position: relative; overflow: hidden; box-shadow: 0 24px 60px rgba(0,0,0,0.45); isolation: isolate; flex-shrink: 0; }
   .screen.first { border-radius: 28px 0 0 28px; }
   .screen.last  { border-radius: 0 28px 28px 0; }
+  .screen.single { border-radius: 28px; }
   body.show-gap .screen.first, body.show-gap .screen.last { border-radius: 28px; }
   .screen .inner { position: absolute; inset: 0; transform-origin: 0 0; transform: scale(var(--S)); width: var(--W); height: var(--H); }
   @media (min-width: 1600px) { .screen { --S: 0.24; } }
@@ -59,7 +62,7 @@
     background-size: 200% 100%; }
   .screen.first .bg { background-position: 0% 50%; }
   .screen.last  .bg { background-position: 100% 50%; }
-  /* Wider dot grid */
+  .screen.single .bg { background-size: 100% 100%; background-position: 0 0; }
   .bg-dots { position: absolute; inset: 0; pointer-events: none;
     background-image: radial-gradient(circle, rgba(70, 45, 80, 0.30) 1.8px, transparent 2.4px);
     background-size: 46px 46px; opacity: 0.8; }
@@ -68,14 +71,17 @@
   .brand-top img { width: 66px; height: 66px; display: block; }
   .brand-top .word { font-weight: 700; font-size: 54px; color: var(--text-head); letter-spacing: -1px; }
 
-  .caption-bottom { position: absolute; left: 70px; bottom: 210px; max-width: 680px; }
+  .caption-bottom { position: absolute; left: 70px; bottom: 210px; max-width: 690px; }
   .caption-bottom .hd { font-weight: 700; font-size: 88px; line-height: 1.02; color: var(--text-head); letter-spacing: -2.5px; }
-  .caption-bottom .sub { font-weight: 500; font-size: 32px; line-height: 1.35; color: var(--text-body); margin-top: 20px; }
-  .caption-corner { position: absolute; top: 120px; right: 70px; max-width: 720px; text-align: right; }
+  .caption-bottom .sub { font-weight: 500; font-size: 31px; line-height: 1.38; color: var(--text-body); margin-top: 20px; }
+  .caption-corner { position: absolute; top: 120px; right: 70px; max-width: 740px; text-align: right; }
   .caption-corner .hd { font-weight: 700; font-size: 92px; line-height: 1.02; color: var(--text-head); letter-spacing: -2.8px; }
-  .caption-corner .sub { font-weight: 500; font-size: 32px; line-height: 1.35; color: var(--text-body); margin-top: 20px; }
+  .caption-corner .sub { font-weight: 500; font-size: 31px; line-height: 1.38; color: var(--text-body); margin-top: 20px; }
+  .caption-top { position: absolute; top: 170px; left: 0; right: 0; text-align: center; padding: 0 80px; }
+  .caption-top .hd { font-weight: 700; font-size: 88px; line-height: 1.02; color: var(--text-head); letter-spacing: -2.5px; }
+  .caption-top .sub { font-weight: 500; font-size: 31px; line-height: 1.38; color: var(--text-body); margin-top: 18px; }
 
-  /* PHONE — LOCKED (v20) */
+  /* CONNECTOR PHONE — LOCKED (v20) */
   .phone-wrap { position: absolute; width: 1100px; height: 2300px; top: 390px;
     transform: rotate(-15deg);
     filter: drop-shadow(0 50px 80px rgba(30, 10, 45, 0.40)) drop-shadow(0 20px 30px rgba(30, 10, 45, 0.25)); }
@@ -83,22 +89,25 @@
   .screen.last  .phone-wrap { left: -550px; }
   .phone { width: 100%; height: 100%; background: #0B0B0B; border-radius: 120px; padding: 22px; position: relative; }
   .phone::before { content: ""; position: absolute; inset: 8px; border-radius: 112px; background: linear-gradient(140deg, rgba(255,255,255,0.10), rgba(255,255,255,0) 40%); pointer-events: none; z-index: 3; }
-
-  /* ============================================================
-     PHONE SCREEN = YOUR REAL SCREENSHOT
-     Cropped from the 5×2 App Store grid you sent (column 1 = "Cada visita suma puntos").
-     Grid is 1310×1116. Each cell 262×558. Screen area inside cell ≈ x 38–226, y 122–530.
-     Scaled ×5.6 so that region fills the 1056×2256 screen.
-     ============================================================ */
   .screen-content { width: 100%; height: 100%; border-radius: 100px; overflow: hidden; position: relative;
-    background-image: url('original-appstore.webp');
-    background-repeat: no-repeat;
-    background-size: 7336px auto;
-    image-rendering: auto; }
-  .lang-es .screen-content { background-position: -213px -683px; }    /* row 1, col 1 */
-  .lang-en .screen-content { background-position: -213px -3808px; }   /* row 2, col 1 */
+    background-repeat: no-repeat; background-size: cover; background-position: top center; background-color: #EFEBE6; }
 
-  /* NOTIFICATIONS — website style, only in free space */
+  /* SINGLE PAGES — straight centred phone */
+  .screen.single .phone-wrap { width: 840px; height: 1770px; top: 680px; left: 225px; transform: none;
+    filter: drop-shadow(0 40px 70px rgba(30, 10, 45, 0.36)) drop-shadow(0 16px 26px rgba(30, 10, 45, 0.22)); }
+  .screen.single .phone { border-radius: 96px; padding: 20px; }
+  .screen.single .phone::before { inset: 7px; border-radius: 89px; }
+  .screen.single .screen-content { border-radius: 78px; }
+
+  /* REAL SCREENSHOTS */
+  .pg-home       .screen-content { background-image: url('home.webp'); }
+  .pg-browse     .screen-content { background-image: url('shop-browse.webp'); }
+  .pg-members    .screen-content { background-image: url('shop-memberships.webp'); }
+  .pg-treatments .screen-content { background-image: url('shop-treatments.webp'); }
+  .pg-wallet     .screen-content { background-image: url('rewards-open.webp'); }
+  .pg-rewards    .screen-content { background-image: url('rewards-closed.webp'); }
+
+  /* NOTIFICATIONS */
   .notif { position: absolute; background: #FBF9FC; border-radius: 30px; padding: 20px 30px 20px 20px; display: flex; gap: 18px; align-items: center;
     min-width: 500px;
     box-shadow: 0 24px 50px rgba(30, 10, 45, 0.22), 0 8px 18px rgba(30, 10, 45, 0.12), inset 0 0 0 1px rgba(255,255,255,0.8);
@@ -122,29 +131,6 @@
   .notif.sz-l .hdr .b, .notif.sz-l .hdr .tm { font-size: 22px; }
   .notif.sz-l .t { font-size: 37px; } .notif.sz-l .s { font-size: 28px; }
 
-  /* ============================================================
-     NORMAL PAGES (screens 3, 4, 5) — single centred phone, caption on top
-     ============================================================ */
-  .row { display: flex; gap: 28px; flex-wrap: nowrap; }
-  body.zoom-full .row { gap: 60px; }
-  .screen.single { border-radius: 28px; }
-  .screen.single .bg { background-size: 100% 100%; background-position: 0 0; }
-  .caption-top { position: absolute; top: 170px; left: 0; right: 0; text-align: center; padding: 0 70px; }
-  .caption-top .hd { font-weight: 700; font-size: 88px; line-height: 1.02; color: var(--text-head); letter-spacing: -2.5px; }
-  .caption-top .sub { font-weight: 500; font-size: 32px; line-height: 1.35; color: var(--text-body); margin-top: 18px; }
-  .screen.single .phone-wrap { width: 840px; height: 1770px; top: 680px; left: 225px; transform: none;
-    filter: drop-shadow(0 40px 70px rgba(30, 10, 45, 0.36)) drop-shadow(0 16px 26px rgba(30, 10, 45, 0.22)); }
-  .screen.single .phone { border-radius: 96px; padding: 20px; }
-  .screen.single .phone::before { inset: 7px; border-radius: 89px; }
-  .screen.single .screen-content { border-radius: 78px; background-size: 5541px auto; }
-  /* grid columns 3,4,5 — same ×4.23 scale so the 188×408 cell-screen fills 800×1730 */
-  .lang-es .screen.single.col3 .screen-content { background-position: -2377px -516px; }
-  .lang-es .screen.single.col4 .screen-content { background-position: -3486px -516px; }
-  .lang-es .screen.single.col5 .screen-content { background-position: -4594px -516px; }
-  .lang-en .screen.single.col3 .screen-content { background-position: -2377px -2876px; }
-  .lang-en .screen.single.col4 .screen-content { background-position: -3486px -2876px; }
-  .lang-en .screen.single.col5 .screen-content { background-position: -4594px -2876px; }
-
   @keyframes floaty { 0%,100% { transform: rotate(var(--rot, 0deg)) translateY(0); } 50% { transform: rotate(var(--rot, 0deg)) translateY(-8px); } }
   footer.foot { max-width: 1600px; margin: 40px auto 0; color: var(--muted); font-size: 12px; line-height: 1.6; text-align: center; }
   footer.foot code { background: rgba(255,255,255,0.06); padding: 2px 6px; border-radius: 4px; color: #cfc3ba; }
@@ -152,18 +138,19 @@
 </head>
 <body>
   <header class="top">
-    <div class="brand"><span class="dot"></span> Loyaly · Screens 1 & 2 <span class="tag">v23 — your real screenshot in the phone</span></div>
+    <div class="brand"><span class="dot"></span> Loyaly · App Store <span class="tag">v25 — real screenshots, story captions</span></div>
     <div class="controls">
       <button id="btnZoom">Toggle 1:1</button>
       <button id="btnGap">Show split line</button>
-      <span class="hint">Phone position locked (v20). Wider dot grid.</span>
+      <span class="hint">Phone position locked (v20).</span>
     </div>
   </header>
 
   <section class="stage">
-    <!-- ================================== SPANISH ================================== -->
+
+    <!-- ================================== SPANISH · 1 & 2 (connector) ================================== -->
     <div class="pair-label">Spanish · 1 & 2</div>
-    <div class="pair lang-es">
+    <div class="pair pg-home">
       <div class="screen first">
         <div class="inner">
           <div class="bg"></div><div class="bg-dots"></div>
@@ -171,10 +158,10 @@
           <div class="phone-wrap"><div class="phone"><div class="screen-content"></div></div></div>
           <div class="caption-bottom">
             <div class="hd">Cada visita<br>suma puntos.</div>
-            <div class="sub">Tu clínica, más cerca que nunca.</div>
+            <div class="sub">Gana puntos con cada tratamiento y canjéalos por regalos.</div>
           </div>
           <div class="notif sz-l" style="top: 290px; left: 60px; --rot: -5deg; --delay: 0s;"><div class="ic"><img src="loyaly-logo.png" alt="" /></div><div class="txt"><div class="hdr"><span class="b">LOYALY</span><span class="tm">ahora</span></div><div class="t">+50 puntos</div><div class="s">Mesoterapia facial</div></div></div>
-          <div class="notif" style="top: 760px; left: 40px; --rot: 4deg; --delay: 1.2s;"><div class="ic"><img src="loyaly-logo.png" alt="" /></div><div class="txt"><div class="hdr"><span class="b">LOYALY</span><span class="tm">2 min</span></div><div class="t">Recompensa desbloqueada</div><div class="s">La crema gratis es tuya</div></div></div>
+          <div class="notif" style="top: 760px; left: 40px; --rot: 4deg; --delay: 1.2s;"><div class="ic"><img src="loyaly-logo.png" alt="" /></div><div class="txt"><div class="hdr"><span class="b">LOYALY</span><span class="tm">2 min</span></div><div class="t">Regalo de bienvenida</div><div class="s">La crema gratis es tuya</div></div></div>
           <div class="notif" style="top: 1300px; left: 50px; --rot: -3deg; --delay: 2.4s;"><div class="ic"><img src="loyaly-logo.png" alt="" /></div><div class="txt"><div class="hdr"><span class="b">LOYALY</span><span class="tm">3h</span></div><div class="t">Pedido listo</div><div class="s">Código de recogida 4821</div></div></div>
           <div class="notif sz-s" style="top: 1820px; left: 60px; --rot: 3deg; --delay: 0.6s;"><div class="ic"><img src="loyaly-logo.png" alt="" /></div><div class="txt"><div class="hdr"><span class="b">LOYALY</span><span class="tm">lun</span></div><div class="t">+80 puntos</div><div class="s">Hydrafacial</div></div></div>
         </div>
@@ -184,20 +171,61 @@
           <div class="bg"></div><div class="bg-dots"></div>
           <div class="caption-corner">
             <div class="hd">Tu clínica,<br>en tu bolsillo.</div>
-            <div class="sub">Explora y reserva al instante.</div>
+            <div class="sub">Puntos, citas, membresías y recompensas. Todo en una app.</div>
           </div>
           <div class="phone-wrap"><div class="phone"><div class="screen-content"></div></div></div>
           <div class="notif sz-l" style="top: 640px; right: 50px; --rot: 5deg; --delay: 0.3s;"><div class="ic"><img src="loyaly-logo.png" alt="" /></div><div class="txt"><div class="hdr"><span class="b">LOYALY</span><span class="tm">ahora</span></div><div class="t">Descuento activado</div><div class="s">20% esta semana</div></div></div>
           <div class="notif" style="top: 1180px; right: 60px; --rot: -3deg; --delay: 1.5s;"><div class="ic"><img src="loyaly-logo.png" alt="" /></div><div class="txt"><div class="hdr"><span class="b">LOYALY</span><span class="tm">2h</span></div><div class="t">Cita confirmada</div><div class="s">Hydrafacial · viernes 15:00</div></div></div>
-          <div class="notif" style="top: 1760px; right: 40px; --rot: 4deg; --delay: 2.6s;"><div class="ic"><img src="loyaly-logo.png" alt="" /></div><div class="txt"><div class="hdr"><span class="b">LOYALY</span><span class="tm">ayer</span></div><div class="t">Regalo desbloqueado</div><div class="s">Kit de manicura gratis</div></div></div>
+          <div class="notif" style="top: 1760px; right: 40px; --rot: 4deg; --delay: 2.6s;"><div class="ic"><img src="loyaly-logo.png" alt="" /></div><div class="txt"><div class="hdr"><span class="b">LOYALY</span><span class="tm">ayer</span></div><div class="t">Marta se ha unido</div><div class="s">+50 puntos para ti</div></div></div>
           <div class="notif sz-s" style="top: 2600px; right: 80px; --rot: -3deg; --delay: 1.9s;"><div class="ic"><img src="loyaly-logo.png" alt="" /></div><div class="txt"><div class="hdr"><span class="b">LOYALY</span><span class="tm">mar</span></div><div class="t">Nueva membresía</div><div class="s">VIP Manos Perfectas</div></div></div>
         </div>
       </div>
     </div>
 
-    <!-- ================================== ENGLISH ================================== -->
+    <!-- ================================== SPANISH · 3–6 ================================== -->
+    <div class="pair-label">Spanish · 3, 4, 5, 6</div>
+    <div class="row">
+      <div class="screen single pg-browse">
+        <div class="inner">
+          <div class="bg"></div><div class="bg-dots"></div>
+          <div class="caption-top"><div class="hd">Todo lo que ofrece<br>tu clínica.</div><div class="sub">Productos, tratamientos y membresías en un solo lugar.</div></div>
+          <div class="phone-wrap"><div class="phone"><div class="screen-content"></div></div></div>
+          <div class="notif sz-s" style="top: 1000px; left: 30px; --rot: -5deg; --delay: 0s;"><div class="ic"><img src="loyaly-logo.png" alt="" /></div><div class="txt"><div class="hdr"><span class="b">LOYALY</span><span class="tm">ahora</span></div><div class="t">Descuento activado</div><div class="s">20% en crema de manos</div></div></div>
+          <div class="notif sz-s" style="top: 2000px; right: 30px; --rot: 4deg; --delay: 1.4s;"><div class="ic"><img src="loyaly-logo.png" alt="" /></div><div class="txt"><div class="hdr"><span class="b">LOYALY</span><span class="tm">1h</span></div><div class="t">Pedido listo</div><div class="s">Recógelo en clínica</div></div></div>
+        </div>
+      </div>
+      <div class="screen single pg-members">
+        <div class="inner">
+          <div class="bg"></div><div class="bg-dots"></div>
+          <div class="caption-top"><div class="hd">Sube de nivel,<br>gana más.</div><div class="sub">Membresías mensuales con precio de socio en cada visita.</div></div>
+          <div class="phone-wrap"><div class="phone"><div class="screen-content"></div></div></div>
+          <div class="notif sz-s" style="top: 950px; right: 30px; --rot: 5deg; --delay: 0.3s;"><div class="ic"><img src="loyaly-logo.png" alt="" /></div><div class="txt"><div class="hdr"><span class="b">LOYALY</span><span class="tm">ahora</span></div><div class="t">Membresía activa</div><div class="s">VIP Manos Perfectas · 20 €/mes</div></div></div>
+          <div class="notif sz-s" style="top: 1950px; left: 30px; --rot: -4deg; --delay: 1.7s;"><div class="ic"><img src="loyaly-logo.png" alt="" /></div><div class="txt"><div class="hdr"><span class="b">LOYALY</span><span class="tm">2h</span></div><div class="t">Precio de socio aplicado</div><div class="s">Uñas acrílicas · 32 €</div></div></div>
+        </div>
+      </div>
+      <div class="screen single pg-wallet">
+        <div class="inner">
+          <div class="bg"></div><div class="bg-dots"></div>
+          <div class="caption-top"><div class="hd">Tu cartera,<br>siempre contigo.</div><div class="sub">Tus puntos, tu nivel y tu historial, siempre a mano.</div></div>
+          <div class="phone-wrap"><div class="phone"><div class="screen-content"></div></div></div>
+          <div class="notif sz-s" style="top: 1000px; left: 30px; --rot: -5deg; --delay: 0.5s;"><div class="ic"><img src="loyaly-logo.png" alt="" /></div><div class="txt"><div class="hdr"><span class="b">LOYALY</span><span class="tm">ahora</span></div><div class="t">+50 puntos</div><div class="s">Mesoterapia facial</div></div></div>
+          <div class="notif sz-s" style="top: 2000px; right: 30px; --rot: 4deg; --delay: 1.9s;"><div class="ic"><img src="loyaly-logo.png" alt="" /></div><div class="txt"><div class="hdr"><span class="b">LOYALY</span><span class="tm">ayer</span></div><div class="t">Nivel Estándar</div><div class="s">Sigue así</div></div></div>
+        </div>
+      </div>
+      <div class="screen single pg-rewards">
+        <div class="inner">
+          <div class="bg"></div><div class="bg-dots"></div>
+          <div class="caption-top"><div class="hd">Recompensas<br>de verdad.</div><div class="sub">Canjea puntos por descuentos, regalos y tratamientos gratis.</div></div>
+          <div class="phone-wrap"><div class="phone"><div class="screen-content"></div></div></div>
+          <div class="notif sz-s" style="top: 950px; right: 30px; --rot: 5deg; --delay: 0.2s;"><div class="ic"><img src="loyaly-logo.png" alt="" /></div><div class="txt"><div class="hdr"><span class="b">LOYALY</span><span class="tm">ahora</span></div><div class="t">Recompensa canjeada</div><div class="s">Aceite de cutículas</div></div></div>
+          <div class="notif sz-s" style="top: 1950px; left: 30px; --rot: -4deg; --delay: 1.6s;"><div class="ic"><img src="loyaly-logo.png" alt="" /></div><div class="txt"><div class="hdr"><span class="b">LOYALY</span><span class="tm">14 min</span></div><div class="t">Marta se ha unido</div><div class="s">+80 puntos para ti</div></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ================================== ENGLISH · 1 & 2 (connector) ================================== -->
     <div class="pair-label">English · 1 & 2</div>
-    <div class="pair lang-en">
+    <div class="pair pg-home">
       <div class="screen first">
         <div class="inner">
           <div class="bg"></div><div class="bg-dots"></div>
@@ -205,10 +233,10 @@
           <div class="phone-wrap"><div class="phone"><div class="screen-content"></div></div></div>
           <div class="caption-bottom">
             <div class="hd">Every visit<br>earns points.</div>
-            <div class="sub">Your clinic, closer than ever.</div>
+            <div class="sub">Earn points on every treatment and redeem them for gifts.</div>
           </div>
           <div class="notif sz-l" style="top: 290px; left: 60px; --rot: -5deg; --delay: 0s;"><div class="ic"><img src="loyaly-logo.png" alt="" /></div><div class="txt"><div class="hdr"><span class="b">LOYALY</span><span class="tm">now</span></div><div class="t">+50 points</div><div class="s">Facial mesotherapy</div></div></div>
-          <div class="notif" style="top: 760px; left: 40px; --rot: 4deg; --delay: 1.2s;"><div class="ic"><img src="loyaly-logo.png" alt="" /></div><div class="txt"><div class="hdr"><span class="b">LOYALY</span><span class="tm">2 min</span></div><div class="t">Reward unlocked</div><div class="s">Free cream is yours</div></div></div>
+          <div class="notif" style="top: 760px; left: 40px; --rot: 4deg; --delay: 1.2s;"><div class="ic"><img src="loyaly-logo.png" alt="" /></div><div class="txt"><div class="hdr"><span class="b">LOYALY</span><span class="tm">2 min</span></div><div class="t">Welcome gift</div><div class="s">Free cream is yours</div></div></div>
           <div class="notif" style="top: 1300px; left: 50px; --rot: -3deg; --delay: 2.4s;"><div class="ic"><img src="loyaly-logo.png" alt="" /></div><div class="txt"><div class="hdr"><span class="b">LOYALY</span><span class="tm">3h</span></div><div class="t">Order ready</div><div class="s">Pickup code 4821</div></div></div>
           <div class="notif sz-s" style="top: 1820px; left: 60px; --rot: 3deg; --delay: 0.6s;"><div class="ic"><img src="loyaly-logo.png" alt="" /></div><div class="txt"><div class="hdr"><span class="b">LOYALY</span><span class="tm">Mon</span></div><div class="t">+80 points</div><div class="s">Hydrafacial</div></div></div>
         </div>
@@ -218,82 +246,60 @@
           <div class="bg"></div><div class="bg-dots"></div>
           <div class="caption-corner">
             <div class="hd">Your clinic,<br>in your pocket.</div>
-            <div class="sub">Browse and book instantly.</div>
+            <div class="sub">Points, appointments, memberships and rewards. All in one app.</div>
           </div>
           <div class="phone-wrap"><div class="phone"><div class="screen-content"></div></div></div>
           <div class="notif sz-l" style="top: 640px; right: 50px; --rot: 5deg; --delay: 0.3s;"><div class="ic"><img src="loyaly-logo.png" alt="" /></div><div class="txt"><div class="hdr"><span class="b">LOYALY</span><span class="tm">now</span></div><div class="t">Discount active</div><div class="s">20% off this week</div></div></div>
           <div class="notif" style="top: 1180px; right: 60px; --rot: -3deg; --delay: 1.5s;"><div class="ic"><img src="loyaly-logo.png" alt="" /></div><div class="txt"><div class="hdr"><span class="b">LOYALY</span><span class="tm">2h</span></div><div class="t">Appointment confirmed</div><div class="s">Hydrafacial · Friday 3 PM</div></div></div>
-          <div class="notif" style="top: 1760px; right: 40px; --rot: 4deg; --delay: 2.6s;"><div class="ic"><img src="loyaly-logo.png" alt="" /></div><div class="txt"><div class="hdr"><span class="b">LOYALY</span><span class="tm">yesterday</span></div><div class="t">Gift unlocked</div><div class="s">Free manicure kit</div></div></div>
-          <div class="notif sz-s" style="top: 2600px; right: 80px; --rot: -3deg; --delay: 1.9s;"><div class="ic"><img src="loyaly-logo.png" alt="" /></div><div class="txt"><div class="hdr"><span class="b">LOYALY</span><span class="tm">Tue</span></div><div class="t">New membership</div><div class="s">VIP Hands Perfect</div></div></div>
-        </div>
-      </div>
-    </div>
-    <!-- ================================== SPANISH · 3, 4, 5 ================================== -->
-    <div class="pair-label">Spanish · 3, 4, 5</div>
-    <div class="row lang-es">
-      <div class="screen single col3">
-        <div class="inner">
-          <div class="bg"></div><div class="bg-dots"></div>
-          <div class="caption-top"><div class="hd">Sube de nivel,<br>gana más.</div><div class="sub">Membresías con beneficios exclusivos.</div></div>
-          <div class="phone-wrap"><div class="phone"><div class="screen-content"></div></div></div>
-          <div class="notif sz-s" style="top: 900px; left: 30px; --rot: -5deg; --delay: 0s;"><div class="ic"><img src="loyaly-logo.png" alt="" /></div><div class="txt"><div class="hdr"><span class="b">LOYALY</span><span class="tm">ahora</span></div><div class="t">Nivel VIP desbloqueado</div><div class="s">Manos Perfectas</div></div></div>
-          <div class="notif sz-s" style="top: 1900px; right: 30px; --rot: 4deg; --delay: 1.4s;"><div class="ic"><img src="loyaly-logo.png" alt="" /></div><div class="txt"><div class="hdr"><span class="b">LOYALY</span><span class="tm">2h</span></div><div class="t">Membresía activa</div><div class="s">20 € / mes</div></div></div>
-        </div>
-      </div>
-      <div class="screen single col4">
-        <div class="inner">
-          <div class="bg"></div><div class="bg-dots"></div>
-          <div class="caption-top"><div class="hd">Tu tarjeta,<br>siempre contigo.</div><div class="sub">Tus puntos y tu nivel, en un vistazo.</div></div>
-          <div class="phone-wrap"><div class="phone"><div class="screen-content"></div></div></div>
-          <div class="notif sz-s" style="top: 1000px; right: 30px; --rot: 5deg; --delay: 0.3s;"><div class="ic"><img src="loyaly-logo.png" alt="" /></div><div class="txt"><div class="hdr"><span class="b">LOYALY</span><span class="tm">ahora</span></div><div class="t">+50 puntos</div><div class="s">Mesoterapia facial</div></div></div>
-          <div class="notif sz-s" style="top: 2000px; left: 30px; --rot: -4deg; --delay: 1.7s;"><div class="ic"><img src="loyaly-logo.png" alt="" /></div><div class="txt"><div class="hdr"><span class="b">LOYALY</span><span class="tm">ayer</span></div><div class="t">Pedido listo</div><div class="s">Código de recogida 4821</div></div></div>
-        </div>
-      </div>
-      <div class="screen single col5">
-        <div class="inner">
-          <div class="bg"></div><div class="bg-dots"></div>
-          <div class="caption-top"><div class="hd">Recompensas<br>de verdad.</div><div class="sub">Canjea tus puntos por tratamientos.</div></div>
-          <div class="phone-wrap"><div class="phone"><div class="screen-content"></div></div></div>
-          <div class="notif sz-s" style="top: 950px; left: 30px; --rot: -5deg; --delay: 0.5s;"><div class="ic"><img src="loyaly-logo.png" alt="" /></div><div class="txt"><div class="hdr"><span class="b">LOYALY</span><span class="tm">ahora</span></div><div class="t">Recompensa canjeada</div><div class="s">Aceite de cutículas</div></div></div>
-          <div class="notif sz-s" style="top: 1950px; right: 30px; --rot: 4deg; --delay: 1.9s;"><div class="ic"><img src="loyaly-logo.png" alt="" /></div><div class="txt"><div class="hdr"><span class="b">LOYALY</span><span class="tm">14 min</span></div><div class="t">Marta se ha unido</div><div class="s">+80 puntos para ti</div></div></div>
+          <div class="notif" style="top: 1760px; right: 40px; --rot: 4deg; --delay: 2.6s;"><div class="ic"><img src="loyaly-logo.png" alt="" /></div><div class="txt"><div class="hdr"><span class="b">LOYALY</span><span class="tm">yesterday</span></div><div class="t">Marta joined</div><div class="s">+50 points for you</div></div></div>
+          <div class="notif sz-s" style="top: 2600px; right: 80px; --rot: -3deg; --delay: 1.9s;"><div class="ic"><img src="loyaly-logo.png" alt="" /></div><div class="txt"><div class="hdr"><span class="b">LOYALY</span><span class="tm">Tue</span></div><div class="t">New membership</div><div class="s">VIP Manos Perfectas</div></div></div>
         </div>
       </div>
     </div>
 
-    <!-- ================================== ENGLISH · 3, 4, 5 ================================== -->
-    <div class="pair-label">English · 3, 4, 5</div>
-    <div class="row lang-en">
-      <div class="screen single col3">
+    <!-- ================================== ENGLISH · 3–6 ================================== -->
+    <div class="pair-label">English · 3, 4, 5, 6</div>
+    <div class="row">
+      <div class="screen single pg-browse">
         <div class="inner">
           <div class="bg"></div><div class="bg-dots"></div>
-          <div class="caption-top"><div class="hd">Move up a tier,<br>earn more.</div><div class="sub">Memberships with exclusive perks.</div></div>
+          <div class="caption-top"><div class="hd">Everything your<br>clinic offers.</div><div class="sub">Products, treatments and memberships in one place.</div></div>
           <div class="phone-wrap"><div class="phone"><div class="screen-content"></div></div></div>
-          <div class="notif sz-s" style="top: 900px; left: 30px; --rot: -5deg; --delay: 0s;"><div class="ic"><img src="loyaly-logo.png" alt="" /></div><div class="txt"><div class="hdr"><span class="b">LOYALY</span><span class="tm">now</span></div><div class="t">VIP tier unlocked</div><div class="s">Perfect Hands</div></div></div>
-          <div class="notif sz-s" style="top: 1900px; right: 30px; --rot: 4deg; --delay: 1.4s;"><div class="ic"><img src="loyaly-logo.png" alt="" /></div><div class="txt"><div class="hdr"><span class="b">LOYALY</span><span class="tm">2h</span></div><div class="t">Membership active</div><div class="s">€20 / month</div></div></div>
+          <div class="notif sz-s" style="top: 1000px; left: 30px; --rot: -5deg; --delay: 0s;"><div class="ic"><img src="loyaly-logo.png" alt="" /></div><div class="txt"><div class="hdr"><span class="b">LOYALY</span><span class="tm">now</span></div><div class="t">Discount active</div><div class="s">20% off hand cream</div></div></div>
+          <div class="notif sz-s" style="top: 2000px; right: 30px; --rot: 4deg; --delay: 1.4s;"><div class="ic"><img src="loyaly-logo.png" alt="" /></div><div class="txt"><div class="hdr"><span class="b">LOYALY</span><span class="tm">1h</span></div><div class="t">Order ready</div><div class="s">Pick it up at the clinic</div></div></div>
         </div>
       </div>
-      <div class="screen single col4">
+      <div class="screen single pg-members">
         <div class="inner">
           <div class="bg"></div><div class="bg-dots"></div>
-          <div class="caption-top"><div class="hd">Your card,<br>always with you.</div><div class="sub">Your points and tier, at a glance.</div></div>
+          <div class="caption-top"><div class="hd">Move up a tier,<br>earn more.</div><div class="sub">Monthly memberships with member pricing on every visit.</div></div>
           <div class="phone-wrap"><div class="phone"><div class="screen-content"></div></div></div>
-          <div class="notif sz-s" style="top: 1000px; right: 30px; --rot: 5deg; --delay: 0.3s;"><div class="ic"><img src="loyaly-logo.png" alt="" /></div><div class="txt"><div class="hdr"><span class="b">LOYALY</span><span class="tm">now</span></div><div class="t">+50 points</div><div class="s">Facial mesotherapy</div></div></div>
-          <div class="notif sz-s" style="top: 2000px; left: 30px; --rot: -4deg; --delay: 1.7s;"><div class="ic"><img src="loyaly-logo.png" alt="" /></div><div class="txt"><div class="hdr"><span class="b">LOYALY</span><span class="tm">yesterday</span></div><div class="t">Order ready</div><div class="s">Pickup code 4821</div></div></div>
+          <div class="notif sz-s" style="top: 950px; right: 30px; --rot: 5deg; --delay: 0.3s;"><div class="ic"><img src="loyaly-logo.png" alt="" /></div><div class="txt"><div class="hdr"><span class="b">LOYALY</span><span class="tm">now</span></div><div class="t">Membership active</div><div class="s">VIP Manos Perfectas · €20/mo</div></div></div>
+          <div class="notif sz-s" style="top: 1950px; left: 30px; --rot: -4deg; --delay: 1.7s;"><div class="ic"><img src="loyaly-logo.png" alt="" /></div><div class="txt"><div class="hdr"><span class="b">LOYALY</span><span class="tm">2h</span></div><div class="t">Member price applied</div><div class="s">Acrylic nails · €32</div></div></div>
         </div>
       </div>
-      <div class="screen single col5">
+      <div class="screen single pg-wallet">
         <div class="inner">
           <div class="bg"></div><div class="bg-dots"></div>
-          <div class="caption-top"><div class="hd">Rewards<br>worth having.</div><div class="sub">Redeem your points for treatments.</div></div>
+          <div class="caption-top"><div class="hd">Your wallet,<br>always with you.</div><div class="sub">Your points, tier and history, always at hand.</div></div>
           <div class="phone-wrap"><div class="phone"><div class="screen-content"></div></div></div>
-          <div class="notif sz-s" style="top: 950px; left: 30px; --rot: -5deg; --delay: 0.5s;"><div class="ic"><img src="loyaly-logo.png" alt="" /></div><div class="txt"><div class="hdr"><span class="b">LOYALY</span><span class="tm">now</span></div><div class="t">Reward redeemed</div><div class="s">Cuticle oil</div></div></div>
-          <div class="notif sz-s" style="top: 1950px; right: 30px; --rot: 4deg; --delay: 1.9s;"><div class="ic"><img src="loyaly-logo.png" alt="" /></div><div class="txt"><div class="hdr"><span class="b">LOYALY</span><span class="tm">14 min</span></div><div class="t">Marta joined</div><div class="s">+80 points for you</div></div></div>
+          <div class="notif sz-s" style="top: 1000px; left: 30px; --rot: -5deg; --delay: 0.5s;"><div class="ic"><img src="loyaly-logo.png" alt="" /></div><div class="txt"><div class="hdr"><span class="b">LOYALY</span><span class="tm">now</span></div><div class="t">+50 points</div><div class="s">Facial mesotherapy</div></div></div>
+          <div class="notif sz-s" style="top: 2000px; right: 30px; --rot: 4deg; --delay: 1.9s;"><div class="ic"><img src="loyaly-logo.png" alt="" /></div><div class="txt"><div class="hdr"><span class="b">LOYALY</span><span class="tm">yesterday</span></div><div class="t">Standard tier</div><div class="s">Keep going</div></div></div>
+        </div>
+      </div>
+      <div class="screen single pg-rewards">
+        <div class="inner">
+          <div class="bg"></div><div class="bg-dots"></div>
+          <div class="caption-top"><div class="hd">Rewards<br>worth having.</div><div class="sub">Redeem points for discounts, gifts and free treatments.</div></div>
+          <div class="phone-wrap"><div class="phone"><div class="screen-content"></div></div></div>
+          <div class="notif sz-s" style="top: 950px; right: 30px; --rot: 5deg; --delay: 0.2s;"><div class="ic"><img src="loyaly-logo.png" alt="" /></div><div class="txt"><div class="hdr"><span class="b">LOYALY</span><span class="tm">now</span></div><div class="t">Reward redeemed</div><div class="s">Cuticle oil</div></div></div>
+          <div class="notif sz-s" style="top: 1950px; left: 30px; --rot: -4deg; --delay: 1.6s;"><div class="ic"><img src="loyaly-logo.png" alt="" /></div><div class="txt"><div class="hdr"><span class="b">LOYALY</span><span class="tm">14 min</span></div><div class="t">Marta joined</div><div class="s">+80 points for you</div></div></div>
         </div>
       </div>
     </div>
   </section>
 
-  <footer class="foot">Phone shows your real "Cada visita suma puntos" screenshot, cropped from the grid you sent. Low-res source → send the raw phone screenshot for a sharp version. True <code>1290 × 2796</code>.</footer>
+  <footer class="foot">Real app screenshots inside every phone. Phone position on 1–2 locked. Treatments page slot ready — re-attach that screenshot. True <code>1290 × 2796</code>.</footer>
 
 <script>
   const body = document.body;
